@@ -275,6 +275,9 @@ private String generatePodSpec(Map config) {
             containers: containers
         ]
     ]
+    if(config.dnsConfig) {
+        podSpec.spec.dnsConfig = config.dnsConfig    
+    }
     podSpec.spec.securityContext = getSecurityContext(config)
 
     return new JsonUtils().groovyObjectToPrettyJsonString(podSpec)
